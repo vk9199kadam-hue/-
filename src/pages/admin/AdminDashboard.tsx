@@ -36,7 +36,6 @@ const AdminDashboard = () => {
 
   const categories = [...new Set(products.map(p => p.category))];
   const totalStock = products.reduce((sum, p) => sum + (p.stock || 0), 0);
-  const totalValue = products.reduce((sum, p) => sum + (p.price * (p.stock || 0)), 0);
   const outOfStock = products.filter(p => p.stock === 0).length;
   const lowStock = products.filter(p => p.stock > 0 && p.stock <= 3).length;
 

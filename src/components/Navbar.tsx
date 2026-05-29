@@ -38,11 +38,6 @@ const menuCategories = [
   },
 ];
 
-const topBarLinks = [
-  { icon: '📍', label: 'Store Locator', path: '/store-locator' },
-  { icon: '📦', label: 'Track Order', path: '/track-order' },
-  { icon: '👤', label: 'Sign In', path: '/sign-in' },
-];
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
