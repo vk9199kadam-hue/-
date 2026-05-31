@@ -2233,7 +2233,7 @@
   }
 
   .shop-filters {
-    position: static;
+    display: none;
   }
 
   .product-detail-content {
