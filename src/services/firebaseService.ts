@@ -143,8 +143,12 @@ export const getAllProducts = async (): Promise<Product[]> => {
 // Get products by category
 export const getProductsByCategory = async (category: string) => {
   if (!isFirebaseReady || !db) {
-    const res = await getProducts({ category });
-    return res.products as Product[];
+    try {
+      const res = await getProducts({ category });
+      return res.products as Product[];
+    } catch {
+      return DEMO_PRODUCTS.filter(p => p.category === category);
+    }
   }
   const q = query(
     collection(db!, PRODUCTS_COLLECTION),
@@ -157,8 +161,12 @@ export const getProductsByCategory = async (category: string) => {
 // Get featured products
 export const getFeaturedProducts = async () => {
   if (!isFirebaseReady || !db) {
-    const res = await getProducts();
-    return (res.products as Product[]).filter(p => p.isFeatured).slice(0, 8);
+    try {
+      const res = await getProducts();
+      return (res.products as Product[]).filter(p => p.isFeatured).slice(0, 8);
+    } catch {
+      return DEMO_PRODUCTS.filter(p => p.isFeatured).slice(0, 8);
+    }
   }
   const q = query(
     collection(db!, PRODUCTS_COLLECTION),
@@ -172,8 +180,12 @@ export const getFeaturedProducts = async () => {
 // Get new arrivals
 export const getNewArrivals = async () => {
   if (!isFirebaseReady || !db) {
-    const res = await getProducts();
-    return (res.products as Product[]).filter(p => p.isNewArrival).slice(0, 8);
+    try {
+      const res = await getProducts();
+      return (res.products as Product[]).filter(p => p.isNewArrival).slice(0, 8);
+    } catch {
+      return DEMO_PRODUCTS.filter(p => p.isNewArrival).slice(0, 8);
+    }
   }
   const q = query(
     collection(db!, PRODUCTS_COLLECTION),
@@ -191,8 +203,8 @@ export const getProductById = async (id: string) => {
       const res = await getProduct(id);
       return res as Product;
     } catch (e) {
-      console.error('Error fetching product by ID:', e);
-      return null;
+      console.error('Error fetching product by ID, using demo fallback:', e);
+      return DEMO_PRODUCTS.find(p => p.id === id) || null;
     }
   }
   const docRef = doc(db!, PRODUCTS_COLLECTION, id);
