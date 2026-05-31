@@ -7,6 +7,7 @@ import { dirname, join } from 'path';
 import productsRouter from './routes/products.js';
 import authRouter from './routes/auth.js';
 import uploadRouter from './routes/upload.js';
+import ordersRouter from './routes/orders.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -28,6 +29,7 @@ app.use('/uploads', express.static(join(__dirname, '..', 'uploads')));
 app.use('/api/products', productsRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/upload', uploadRouter);
+app.use('/api/orders', ordersRouter);
 
 // Health check
 app.get('/api/health', (req, res) => {

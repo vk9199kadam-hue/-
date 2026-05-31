@@ -259,6 +259,10 @@ if (!app) {
       const data = this.collectionRef.dbInstance.getData(this.collectionRef.name, this.id);
       return new MockDocSnapshot(this.id, data);
     }
+    async set(data) {
+      this.collectionRef.dbInstance.setData(this.collectionRef.name, this.id, data);
+      return { writeTime: new Date() };
+    }
     async update(data) {
       this.collectionRef.dbInstance.updateData(this.collectionRef.name, this.id, data);
       return { writeTime: new Date() };
@@ -344,6 +348,18 @@ if (!app) {
     getData(collectionName, id) {
       const list = this.data[collectionName] || [];
       return list.find(item => item.id === id);
+    }
+    setData(collectionName, id, item) {
+      if (!this.data[collectionName]) this.data[collectionName] = [];
+      const list = this.data[collectionName];
+      const idx = list.findIndex(x => x.id === id);
+      const newItem = { id, ...item };
+      if (idx !== -1) {
+        list[idx] = newItem;
+      } else {
+        list.push(newItem);
+      }
+      this.save();
     }
     addData(collectionName, item) {
       if (!this.data[collectionName]) this.data[collectionName] = [];

@@ -1,15 +1,66 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../services/firebase';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const [mode, setMode] = useState<'signin' | 'signup'>('signin');
   const [form, setForm] = useState({ email: '', password: '', name: '', phone: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setError('');
+    setLoading(true);
+
+    if (!auth) {
+      console.warn("Firebase not configured. Using local mock customer account.");
+      setSubmitted(true);
+      localStorage.setItem('userEmail', form.email);
+      localStorage.setItem('userName', form.name || 'Valued Customer');
+      localStorage.setItem('userPhone', form.phone || '');
+      setTimeout(() => {
+        setSubmitted(false);
+        navigate('/shop');
+      }, 2000);
+      setLoading(false);
+      return;
+    }
+
+    try {
+      if (mode === 'signin') {
+        const userCredential = await signInWithEmailAndPassword(auth, form.email, form.password);
+        localStorage.setItem('userEmail', userCredential.user.email || '');
+        localStorage.setItem('userName', userCredential.user.displayName || 'Valued Customer');
+      } else {
+        const userCredential = await createUserWithEmailAndPassword(auth, form.email, form.password);
+        await updateProfile(userCredential.user, { displayName: form.name });
+        localStorage.setItem('userEmail', userCredential.user.email || '');
+        localStorage.setItem('userName', form.name);
+        localStorage.setItem('userPhone', form.phone);
+      }
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        navigate('/shop');
+      }, 2000);
+    } catch (err: any) {
+      console.error('Authentication failed:', err);
+      if (err.code === 'auth/email-already-in-use') {
+        setError('This email is already registered.');
+      } else if (err.code === 'auth/invalid-credential') {
+        setError('Invalid email or password.');
+      } else if (err.code === 'auth/weak-password') {
+        setError('Password must be at least 6 characters.');
+      } else {
+        setError(err.message || 'Authentication error. Please try again.');
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -26,17 +77,29 @@ const SignIn = () => {
           <div className="signin-toggle">
             <button
               className={`signin-toggle-btn ${mode === 'signin' ? 'active' : ''}`}
-              onClick={() => setMode('signin')}
+              onClick={() => {
+                setMode('signin');
+                setError('');
+              }}
             >
               Sign In
             </button>
             <button
               className={`signin-toggle-btn ${mode === 'signup' ? 'active' : ''}`}
-              onClick={() => setMode('signup')}
+              onClick={() => {
+                setMode('signup');
+                setError('');
+              }}
             >
               Register
             </button>
           </div>
+
+          {error && (
+            <div className="error-message">
+              <span>⚠️</span> {error}
+            </div>
+          )}
 
           {submitted ? (
             <div className="success-message">
@@ -45,7 +108,7 @@ const SignIn = () => {
               <p>
                 {mode === 'signin'
                   ? 'You have been signed in successfully.'
-                  : 'Your account has been created. You can now track orders and manage your wishlist.'}
+                  : 'Your account has been created. Redirecting to collections...'}
               </p>
             </div>
           ) : (
@@ -98,8 +161,8 @@ const SignIn = () => {
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-primary btn-lg btn-block">
-                {mode === 'signin' ? 'Sign In' : 'Create Account'}
+              <button type="submit" className="btn btn-primary btn-lg btn-block" disabled={loading}>
+                {loading ? 'Authenticating...' : mode === 'signin' ? 'Sign In' : 'Create Account'}
               </button>
             </form>
           )}

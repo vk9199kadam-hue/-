@@ -17,11 +17,16 @@ import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AddProduct from './pages/admin/AddProduct';
 import ManageProducts from './pages/admin/ManageProducts';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import Profile from './pages/Profile';
+import { CartProvider } from './context/CartContext';
 import './App.css';
 
 function App() {
   return (
-    <Router>
+    <CartProvider>
+      <Router>
       <Routes>
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLogin />} />
@@ -62,6 +67,44 @@ function App() {
                 <div className="container">
                   <ManageProducts />
                 </div>
+              </main>
+              <Footer />
+            </>
+          }
+        />
+
+        {/* Cart, Checkout & Profile Routes */}
+        <Route
+          path="/cart"
+          element={
+            <>
+              <Navbar />
+              <main className="main-content">
+                <Cart />
+              </main>
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <>
+              <Navbar />
+              <main className="main-content">
+                <Checkout />
+              </main>
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <>
+              <Navbar />
+              <main className="main-content">
+                <Profile />
               </main>
               <Footer />
             </>
@@ -274,6 +317,7 @@ function App() {
         />
       </Routes>
     </Router>
+  </CartProvider>
   );
 }
 

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { categories, collections } from '../services/firebaseService';
+import { useCart } from '../context/CartContext';
 
 const menuCategories = [
   {
@@ -40,6 +41,7 @@ const menuCategories = [
 
 
 const Navbar = () => {
+  const { cartCount } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMegaOpen, setIsMegaOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -178,13 +180,22 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Desktop / Mobile Sign In Link */}
+            {/* Shopping Cart Link */}
             <Link
-              to="/sign-in"
+              to="/cart"
+              className="nav-link nav-cart-btn"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              🛒 Cart {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+            </Link>
+
+            {/* Desktop / Mobile Sign In / Profile Link */}
+            <Link
+              to={localStorage.getItem('userEmail') ? "/profile" : "/sign-in"}
               className="nav-link nav-signin-btn"
               onClick={() => setIsMenuOpen(false)}
             >
-              👤 Sign In
+              👤 {localStorage.getItem('userEmail') ? "Profile" : "Sign In"}
             </Link>
           </div>
 
