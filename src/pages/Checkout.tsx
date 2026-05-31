@@ -329,10 +329,21 @@ const Checkout = () => {
               <div className="checkout-items-preview">
                 {cartItems.map(item => (
                   <div key={item.product.id} className="preview-item">
-                    <span>
-                      {item.product.name} <strong>× {item.quantity}</strong>
-                    </span>
-                    <span>₹{(item.product.price * item.quantity).toLocaleString()}</span>
+                    <div className="preview-item-image">
+                      {item.product.images && item.product.images[0] ? (
+                        <img src={item.product.images[0]} alt={item.product.name} />
+                      ) : (
+                        <div className="item-placeholder-sm">✦</div>
+                      )}
+                    </div>
+                    <div className="preview-item-details">
+                      <span className="preview-item-name">
+                        {item.product.name} <strong>× {item.quantity}</strong>
+                      </span>
+                      <span className="preview-item-price">
+                        ₹{(item.product.price * item.quantity).toLocaleString()}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>

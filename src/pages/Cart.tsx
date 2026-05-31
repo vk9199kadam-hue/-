@@ -59,23 +59,19 @@ const Cart = () => {
               {cartItems.map(item => {
                 return (
                   <div key={item.product.id} className="cart-item-card">
-                    <div className="cart-item-image">
+                    <Link to={`/product/${item.product.id}`} className="cart-item-image">
                       {item.product.images && item.product.images[0] ? (
                         <img src={item.product.images[0]} alt={item.product.name} />
                       ) : (
                         <div className="item-placeholder">✦</div>
                       )}
-                    </div>
+                    </Link>
 
                     <div className="cart-item-details">
                       <div className="cart-item-info">
                         <Link to={`/product/${item.product.id}`} className="cart-item-name">
                           {item.product.name}
                         </Link>
-                        <span className="cart-item-meta">
-                          {item.product.purity && <span>Purity: {item.product.purity}</span>}
-                          {item.product.weight && <span>Weight: {item.product.weight}g</span>}
-                        </span>
                       </div>
 
                       <div className="cart-item-pricing">
