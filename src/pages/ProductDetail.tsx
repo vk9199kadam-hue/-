@@ -1,13 +1,25 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getProductById, type Product } from '../services/firebaseService';
+import { useCart } from '../context/CartContext';
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
+  const { addToCart } = useCart();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
   const [showPriceBreakup, setShowPriceBreakup] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [added, setAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart(product, quantity);
+      setAdded(true);
+      setTimeout(() => setAdded(false), 2000);
+    }
+  };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -269,14 +281,49 @@ const ProductDetail = () => {
               </div>
             )}
 
+            {/* Quantity Selector */}
+            {product.stock > 0 && (
+              <div className="product-detail-qty-selector">
+                <span className="qty-label">Quantity:</span>
+                <div className="quantity-controls">
+                  <button
+                    className="qty-btn"
+                    onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
+                    disabled={quantity <= 1}
+                  >
+                    −
+                  </button>
+                  <span className="qty-value">{quantity}</span>
+                  <button
+                    className="qty-btn"
+                    onClick={() => setQuantity(prev => Math.min(product.stock, prev + 1))}
+                    disabled={quantity >= product.stock}
+                  >
+                    +
+                  </button>
+                </div>
+                <span className="stock-count">({product.stock} available)</span>
+              </div>
+            )}
+
             {/* Action Buttons */}
             <div className="product-actions">
-              <a href={`tel:+919975956777`} className="btn btn-primary btn-lg product-action-btn">
+              {product.stock > 0 ? (
+                <button
+                  type="button"
+                  onClick={handleAddToCart}
+                  className={`btn btn-primary btn-lg product-action-btn ${added ? 'btn-success-toast' : ''}`}
+                >
+                  {added ? '✓ Added to Cart!' : '🛒 Add to Cart'}
+                </button>
+              ) : (
+                <button className="btn btn-primary btn-lg product-action-btn" disabled>
+                  Out of Stock
+                </button>
+              )}
+              <a href={`tel:+919975956777`} className="btn btn-outline btn-lg product-action-btn">
                 📞 Enquire Now
               </a>
-              <Link to={`/contact?product=${product.id}`} className="btn btn-outline btn-lg product-action-btn">
-                Book Appointment
-              </Link>
             </div>
 
             {/* Store & Service Info */}
