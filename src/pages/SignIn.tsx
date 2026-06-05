@@ -174,6 +174,36 @@ const SignIn = () => {
           <Link to="/shop" className="btn btn-outline btn-lg btn-block">
             Browse Collection →
           </Link>
+
+          <div className="admin-access-box" style={{ 
+            marginTop: '30px', 
+            padding: '20px', 
+            background: 'var(--cream)', 
+            borderRadius: 'var(--radius-sm)', 
+            border: '1px dashed var(--gold-400)',
+            textAlign: 'center' 
+          }}>
+            <h4 style={{ color: 'var(--maroon)', margin: '0 0 8px 0', fontSize: '15px', fontWeight: '600' }}>
+              🔑 Administration Access
+            </h4>
+            <p style={{ fontSize: '13px', color: 'var(--text-light)', margin: '0 0 15px 0' }}>
+              Access the secure dashboard to manage inventory, update gold rates, and process customer orders.
+            </p>
+            <Link to="/admin" className="btn btn-outline btn-block" style={{ 
+              borderColor: 'var(--gold-500)', 
+              color: 'var(--gold-700)',
+              padding: '10px 15px',
+              fontSize: '14px',
+              backgroundColor: 'var(--white)',
+              display: 'block',
+              textDecoration: 'none',
+              textAlign: 'center',
+              fontWeight: '500',
+              borderRadius: 'var(--radius-sm)'
+            }}>
+              Go to Admin Portal
+            </Link>
+          </div>
         </div>
 
         <div className="signin-features">
