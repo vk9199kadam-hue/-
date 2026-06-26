@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import { categories } from '../services/firebaseService';
 
 const quickLinks = [
@@ -72,9 +72,9 @@ const Footer = () => {
           <div className="footer-section footer-brand">
             <div className="footer-logo">
               <div className="footer-logo-image-wrap">
-                <img src="/images/logo.jpg" alt="Porwal Jewellers Logo" className="footer-logo-img" />
+                <img src="/images/logo.jpg" alt="M/S. RAMESHKUMAR PUKHARAJ M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS Logo" className="footer-logo-img" />
               </div>
-              <span className="footer-logo-text">Porwal Jewellers</span>
+              <span className="footer-logo-text">M/S. RAMESHKUMAR PUKHARAJ M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS</span>
             </div>
             <p className="footer-tagline">
               शा. रमेशकुमार पुखराज पोरवाल ज्युवेलर्स
@@ -190,7 +190,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="footer-bottom">
         <div className="container footer-bottom-content">
-          <p>&copy; {new Date().getFullYear()} Porwal Jewellers. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} M/S. RAMESHKUMAR PUKHARAJ M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS. All rights reserved.</p>
           <div className="footer-bottom-links">
             <Link to="/privacy-policy">Privacy</Link>
             <Link to="/terms-conditions">Terms</Link>

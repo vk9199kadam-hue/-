@@ -101,10 +101,10 @@ const Navbar = () => {
         <div className="container navbar-content">
           <Link to="/" className="logo">
             <div className="logo-image-wrap">
-              <img src="/images/logo.jpg" alt="Porwal Jewellers Logo" className="logo-img" />
+              <img src="/images/logo.jpg" alt="M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS. Logo" className="logo-img" />
             </div>
             <div className="logo-text">
-              <span className="logo-title">Porwal Jewellers</span>
+              <span className="logo-title">M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS.</span>
               <span className="logo-subtitle">शा. रमेशकुमार पुखराज पोरवाल</span>
             </div>
           </Link>

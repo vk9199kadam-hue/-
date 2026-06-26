@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
 import CategorySection from '../components/CategorySection';
@@ -13,7 +13,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    text: 'Have been buying from Porwal Jewellers for years. Their purity guarantee and exchange policy is unmatched in the area.',
+    text: 'Have been buying from M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS for years. Their purity guarantee and exchange policy is unmatched in the area.',
     author: 'Rajesh Patil',
     location: 'Peth',
     rating: 5,
@@ -181,7 +181,7 @@ const Home = () => {
       <section className="assurance-section">
         <div className="container">
           <div className="section-header">
-            <span className="section-subtitle">Why Porwal Jewellers</span>
+            <span className="section-subtitle">Why M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS</span>
             <h2 className="section-title">The Porwal Assurance</h2>
             <p className="section-desc">Experience the confidence that comes from generations of trust</p>
             <div className="section-divider" />
@@ -373,7 +373,7 @@ const Home = () => {
             <div className="about-brief-image">
               <img
                 src="/images/models/about-brief.jpg"
-                alt="Porwal Jewellers Legacy"
+                alt="M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS Legacy"
                 className="about-brief-img"
               />
             </div>

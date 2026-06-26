@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import axios from 'axios';
@@ -105,7 +105,7 @@ const Checkout = () => {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_mock_keys_only',
         amount: cartTotal * 100, // in paisa
         currency: 'INR',
-        name: 'Porwal Jewellers',
+        name: 'M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS',
         description: 'Exquisite Jewellery Purchase',
         image: '/images/logo.jpg',
         order_id: razorpayOrderId,

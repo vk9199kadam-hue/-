@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 
 interface FAQItem {
   q: string;
@@ -56,7 +56,7 @@ const FAQ = () => {
       <div className="page-hero faq-hero">
         <div className="container">
           <h1>Frequently Asked Questions</h1>
-          <p>Everything you need to know about Porwal Jewellers</p>
+          <p>Everything you need to know about M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS</p>
         </div>
       </div>
 

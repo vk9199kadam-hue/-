@@ -1,4 +1,4 @@
-const About = () => {
+﻿const About = () => {
   return (
     <div className="about-page">
       <div className="page-hero about-hero">
@@ -26,7 +26,7 @@ const About = () => {
           <div className="about-visual">
             <img
               src="/images/models/about-legacy.jpg"
-              alt="Porwal Jewellers Craftsmanship"
+              alt="M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS Craftsmanship"
               className="about-legacy-img"
             />
           </div>

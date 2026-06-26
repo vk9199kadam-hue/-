@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../services/firebase';
@@ -60,7 +60,7 @@ const AdminLogin = () => {
         <div className="admin-login-header">
           <span className="admin-logo">✦</span>
           <h1>Admin Panel</h1>
-          <p>Porwal Jewellers</p>
+          <p>M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS</p>
         </div>
 
         <form onSubmit={handleLogin} className="admin-login-form">

@@ -1,10 +1,10 @@
-const StoreLocator = () => {
+﻿const StoreLocator = () => {
   return (
     <div className="store-locator-page">
       <div className="page-hero locator-hero">
         <div className="container">
           <h1>Store Locator</h1>
-          <p>Find Porwal Jewellers near you</p>
+          <p>Find M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS near you</p>
         </div>
       </div>
 
@@ -16,7 +16,7 @@ const StoreLocator = () => {
               <div className="map-fallback">
                 <div className="map-fallback-content">
                   <span className="map-fallback-icon">📍</span>
-                  <h3>Porwal Jewellers, Ishwarpur</h3>
+                  <h3>M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS, Ishwarpur</h3>
                   <p>CTS No. 3570/3571, Gandhi Chowk, Ishwarpur - 415409</p>
                   <a
                     href="https://maps.google.com/?q=Gandhi+Chowk+Ishwarpur+415409"

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
@@ -62,7 +62,7 @@ const Contact = () => {
             <div className="map-placeholder">
               <div className="map-content">
                 <span className="map-icon">📍</span>
-                <h3>Porwal Jewellers</h3>
+                <h3>M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS</h3>
                 <p>Gandhi Chowk, Ishwarpur - 415409</p>
                 <a
                   href="https://maps.google.com/?q=Gandhi+Chowk+Ishwarpur+415409"

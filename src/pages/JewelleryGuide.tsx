@@ -1,4 +1,4 @@
-const guideSections = [
+﻿const guideSections = [
   {
     icon: '💍',
     title: 'Understanding Gold Purity',
@@ -44,7 +44,7 @@ const guideSections = [
       'Gold value is calculated based on the weight and purity of gold at the current market rate.',
       'Making charges cover the craftsmanship and typically range from 8-15% for standard designs.',
       'GST at 3% is applicable on the total value (gold + making charges).',
-      'At Porwal Jewellers, we maintain transparent pricing with no hidden charges.',
+      'At M/S. RAMESHKUMAR PUKHARAJ PORWAL JEWELLERS, we maintain transparent pricing with no hidden charges.',
     ],
   },
 ];
