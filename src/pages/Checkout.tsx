@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import axios from 'axios';
@@ -20,6 +20,7 @@ const Checkout = () => {
   const [paymentMode, setPaymentMode] = useState<'online' | 'store'>('online');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [validated, setValidated] = useState(false);
 
   if (cartItems.length === 0) {
     return (
@@ -50,6 +51,17 @@ const Checkout = () => {
 
   const handleCheckoutSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setValidated(true);
+
+    const formEl = e.currentTarget as HTMLFormElement;
+    if (!formEl.checkValidity()) {
+      const firstInvalid = formEl.querySelector(':invalid');
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+
     setError('');
     setLoading(true);
 
@@ -177,6 +189,7 @@ const Checkout = () => {
       console.error('Checkout error:', err);
       setError(err.response?.data?.message || 'Failed to place order. Please try again.');
       setLoading(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -190,7 +203,7 @@ const Checkout = () => {
       </div>
 
       <div className="container checkout-content-wrapper">
-        <form onSubmit={handleCheckoutSubmit} className="checkout-grid">
+        <form onSubmit={handleCheckoutSubmit} className={`checkout-grid ${validated ? 'was-validated' : ''}`}>
           {/* Billing & Shipping Form */}
           <div className="checkout-form-column">
             <div className="checkout-form-card">

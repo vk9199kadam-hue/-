@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import axios from 'axios';
 
 interface OrderItem {
@@ -247,7 +247,7 @@ const TrackOrder = () => {
           <p>If you're having trouble tracking your order, contact us directly.</p>
           <div className="track-help-actions">
             <a href="tel:+919975956777" className="btn btn-primary">📞 Call Us</a>
-            <a href="/contact" className="btn btn-outline">✉️ Send Message</a>
+            <Link to="/contact" className="btn btn-outline">✉️ Send Message</Link>
           </div>
         </div>
       </div>

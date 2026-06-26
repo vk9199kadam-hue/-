@@ -1,4 +1,6 @@
-﻿const guideSections = [
+import { Link } from 'react-router-dom';
+
+const guideSections = [
   {
     icon: '💍',
     title: 'Understanding Gold Purity',
@@ -92,12 +94,12 @@ const JewelleryGuide = () => {
           <h3>Ready to Find Your Perfect Piece?</h3>
           <p>Visit our store or contact us for personalized assistance.</p>
           <div className="guide-cta-actions">
-            <a href="/shop" className="btn btn-primary btn-lg">
+            <Link to="/shop" className="btn btn-primary btn-lg">
               Browse Collection →
-            </a>
-            <a href="/contact" className="btn btn-outline btn-lg">
+            </Link>
+            <Link to="/contact" className="btn btn-outline btn-lg">
               Book Appointment
-            </a>
+            </Link>
           </div>
         </div>
       </div>

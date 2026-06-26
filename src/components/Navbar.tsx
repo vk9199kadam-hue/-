@@ -131,6 +131,7 @@ const Navbar = () => {
               className="nav-link mega-menu-trigger"
               onMouseEnter={() => setIsMegaOpen(true)}
               onMouseLeave={() => setIsMegaOpen(false)}
+              onClick={() => window.innerWidth <= 768 && setIsMegaOpen(!isMegaOpen)}
               ref={megaRef}
             >
               <span className={`mega-trigger-text ${isMegaOpen ? 'active' : ''}`}>

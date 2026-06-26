@@ -1,4 +1,5 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 interface FAQItem {
   q: string;
@@ -94,9 +95,9 @@ const FAQ = () => {
             <a href="tel:+919975956777" className="btn btn-primary btn-lg">
               📞 Call 9975956777
             </a>
-            <a href="/contact" className="btn btn-outline btn-lg">
+            <Link to="/contact" className="btn btn-outline btn-lg">
               Send a Message →
-            </a>
+            </Link>
           </div>
         </div>
       </div>

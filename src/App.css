@@ -6053,3 +6053,140 @@
   }
 }
 
+/* ============================================
+   MOBILE RESPONSIVENESS AND UX OVERRIDES
+   ============================================ */
+
+/* was-validated form controls */
+.was-validated input:invalid,
+.was-validated textarea:invalid,
+.was-validated select:invalid {
+  border-color: #dc2626;
+  background-color: #fffafb;
+}
+
+@media (max-width: 968px) {
+  .locator-main {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Logo adjustments to prevent overlap */
+  .logo-title {
+    font-size: 1.05em;
+    max-width: 250px;
+    white-space: normal;
+  }
+  
+  .logo-subtitle {
+    font-size: 9px;
+  }
+
+  /* Product actions stacking */
+  .product-actions {
+    flex-direction: column;
+  }
+  .product-actions .product-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Mobile Categories Drawer (Mega Menu) Accordion Styles */
+  .nav-link.mega-menu-trigger {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .mega-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    max-height: 0;
+    overflow: hidden;
+    background: transparent;
+    transition: max-height 0.3s ease;
+    width: 100%;
+  }
+
+  .mega-menu.show {
+    max-height: 1200px;
+  }
+
+  .mega-menu-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 10px 0 10px 15px;
+  }
+
+  .mega-column-title {
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--cream-dark);
+    font-size: 11px;
+    padding-bottom: 4px;
+  }
+
+  .mega-spotlight {
+    display: none; /* Hide desktop visual content on mobile menu */
+  }
+
+  .mega-link {
+    padding: 4px 8px;
+    font-size: 13px;
+  }
+
+  .mega-arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .mega-trigger-text.active .mega-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Section and Grid Stackings */
+  .exchange-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .exchange-card-features,
+  .services-grid,
+  .testimonials-grid,
+  .landmarks-grid,
+  .goldrate-info-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Reduce paddings on mobile cards */
+  .guide-section {
+    padding: 20px;
+  }
+
+  .checkout-form-card,
+  .summary-card,
+  .contact-form,
+  .locator-detail-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-title {
+    font-size: 0.9em;
+    max-width: 200px;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: 180px !important;
+    gap: 12px !important;
+  }
+}
+
+

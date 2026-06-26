@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 interface PolicyConfig {
   title: string;
@@ -185,7 +185,7 @@ const PolicyPage = () => {
         <div className="policy-footer">
           <p>
             Last updated: January 2026. For any questions regarding our policies,
-            please <a href="/contact">contact us</a> or call{' '}
+            please <Link to="/contact">contact us</Link> or call{' '}
             <a href="tel:+919975956777">9975956777</a>.
           </p>
         </div>
